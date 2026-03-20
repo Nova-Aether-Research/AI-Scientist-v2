@@ -1,0 +1,24 @@
+name: Daily Nova Aether Swarm Cycle
+
+on:
+  schedule:
+    - cron: '0 8 * * *'  # Runs every day at 8 AM UTC (~1 AM PDT)
+  workflow_dispatch:      # Allows you to run it manually from GitHub UI
+
+jobs:
+  swarm:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Trigger Grok Swarm Cycle
+        run: |
+          echo "=== NOVA AETHER SWARM CYCLE STARTED $(date) ==="
+          echo "Org: Novaaether"
+          echo "Repo: AI-Scientist-v2"
+          echo "Memory repo: https://github.com/nova-aether-research/memory"
+          echo "Domain: novaaetherresearch.com"
+          echo "EIN: 41-4995612"
+          echo "Cycle complete — results will be logged in memory repo."
+          # Future steps will automatically run lightweight Python experiments here
