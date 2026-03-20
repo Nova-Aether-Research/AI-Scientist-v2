@@ -3,13 +3,15 @@ name: Daily Nova Aether Swarm Cycle
 on:
   schedule:
     - cron: '0 8 * * *'  # Runs every day at 8 AM UTC (~1 AM PDT)
-  workflow_dispatch:      # Allows you to run it manually from GitHub UI
+  workflow_dispatch:      # Allows manual trigger
+
+# Suppress Node 20 deprecation warning (effective immediately)
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   swarm:
     runs-on: ubuntu-latest
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true   # Future-proofs against Node 20 deprecation
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -23,4 +25,4 @@ jobs:
           echo "Domain: novaaetherresearch.com"
           echo "EIN: 41-4995612"
           echo "Cycle complete — results will be logged in memory repo."
-          # Future steps will automatically run lightweight Python experiments here
+          # Future steps will run lightweight Python experiments here
