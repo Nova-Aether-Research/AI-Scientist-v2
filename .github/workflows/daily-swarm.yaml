@@ -5,9 +5,10 @@ on:
     - cron: '0 8 * * *'  # Runs every day at 8 AM UTC (~1 AM PDT)
   workflow_dispatch:      # Allows manual trigger
 
-# Suppress Node 20 deprecation warning (effective immediately)
+# Completely silences Node 20 deprecation warning (GitHub-recommended)
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
 
 jobs:
   swarm:
